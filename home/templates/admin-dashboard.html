@@ -1,0 +1,86 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="{% static 'css/admin-dashboard.css' %}">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="{% static 'js/dashboard.js' %}" defer></script>
+    <title>Dashboard</title>
+</head>
+<body>
+    <div class="dashboard-container">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <div class="sidebar-header">
+                <div class="profile-pic">
+                    <i class="fas fa-user-circle"></i>
+                </div>
+                <h2>UAT Staff Lodge Manager</h2>
+                <hr>
+                <h2>Welcome, John Doe</h2>
+                <hr>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="{% url 'dashboard' %}"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
+                    <li><a href="{% url 'admin-room' %}"><i class="fas fa-bed"></i> Rooms</a></li>
+                    <li><a href="{% url 'staff-room' %}"><i class="fas fa-user-tie"></i> Staff</a></li>
+                    <li><a href="#"><i class="fas fa-calendar-check"></i> Bookings</a></li>
+                    <li><a href="#"><i class="fas fa-cog"></i> Settings</a></li>
+                </ul>
+            </nav>
+            <div class="logout">
+                <a href="{% url 'admin-logout' %}" class="logout-btn"><i class="fas fa-sign-out-alt"></i> Logout</a>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <h1>Dashboard</h1>
+            <p>Overview of your lodge management system</p>
+
+            <hr>
+
+            <!-- Stats Row -->
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <i class="fas fa-bed"></i>
+                    <h3>Total Rooms</h3>
+                    <p id="total-rooms">{{ room_count }}</p>
+                </div>
+                <div class="stat-card">
+                    <i class="fas fa-user-tie"></i>
+                    <h3>Current Residents</h3>
+                    <p id="total-students">0</p>
+                </div>
+                <div class="stat-card">
+                    <i class="fas fa-calendar-check"></i>
+                    <h3>Capacity</h3>
+                    <p id="total-bookings">{{ total_capacity }}</p>
+                </div>
+                <div class="stat-card">
+                    <i class="fas fa-clock"></i>
+                    <h3>Active Lodge</h3>
+                    <p id="active-bookings">0</p>
+                </div>
+            </div>
+
+            <!-- Chart Section -->
+            <div class="chart-container">
+                <h2>Analytics Overview</h2>
+                <p id="chart">Monthly occupancy rate for the current year</p>
+                <canvas id="occupancyChart"></canvas>
+            </div>
+
+            <!-- Recent Bookings Section -->
+            <div class="recent-bookings">
+                <h2>Recent Bookings</h2>
+                <p id="new-booking">Latest staff lodging and allocations</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,57 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/new_room.css' %}">
+    <title>Add Room</title>
+</head>
+<body>
+
+    <div class="modal">
+        <!-- Close Button -->
+        <span class="close-btn">&times;</span>
+
+        <h2 class="modal-title">Add New Room</h2>
+        <p class="modal-subtitle">Enter the details for the new room</p>
+
+        {% if success %}
+            <p class="success-message">{{ success }}</p>
+        {% endif %}
+
+        <form method="post" >
+            {% csrf_token %}
+
+            <div class="form-grid">
+                <div>
+                    <label for="{{ form.room_number.id_for_label }}">Room Number</label>
+                    {{ form.room_number }}
+                </div>
+                <div>
+                    <label for="{{ form.building.id_for_label }}">Building</label>
+                    {{ form.building }}
+                </div>
+                <div>
+                    <label for="{{ form.capacity.id_for_label }}">Capacity</label>
+                    {{ form.capacity }}
+                </div>
+                <div>
+                    <label for="{{ form.room_type.id_for_label }}">Room Type</label>
+                    {{ form.room_type }}
+                </div>
+                
+            </div>
+
+            <div class="button-group">
+                <button type="button" class="cancel-btn" onclick="window.location.href='{% url 'admin-room' %}'">Cancel</button>
+                <button type="submit" class="submit-btn">
+                    Add Room
+                </button>
+            </div>
+        </form>
+    </div>
+
+</body>
+</html>

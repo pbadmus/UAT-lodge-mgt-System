@@ -1,0 +1,287 @@
+body{
+    padding: 0px;
+    margin: 0px;
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    height: 100vh;
+    background-color: white;
+    width: 100%;
+}
+
+.sidebar {
+    width: 250px;
+    height: 100vh;
+    background-color: red;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding-top: 10px;
+    padding-left: 20px;
+    position: fixed;
+    left: 0;
+    top: 0;
+    
+}
+
+.profile-pic{
+    font-size: 4rem;  
+    color: white;     
+    margin-bottom: 10px;
+}
+
+.sidebar hr {
+    width: 100%;
+    border: 1px solid rgb(32, 31, 31);
+    margin: 5px 0;
+}
+
+h2 {
+    font-size: 1.2rem;
+    font-weight: bold;
+    padding: 0;
+    margin-left: 0;
+
+}
+
+.logout {
+    margin-top: auto;
+    padding: 15px 0;
+    width: 50%;
+    text-align: left;
+}
+
+.logout a {
+    text-decoration: none;
+    color: white;
+    font-size: 1rem;
+    display: flex;
+    justify-content: left;
+    align-items: 5px;
+}
+
+.logout a i {
+    margin-right: 10px;
+}
+
+nav {
+    width: 100%;
+    text-align: left;
+}
+
+nav ul {
+    list-style: none;
+    width: 100%;
+    padding-left: 0;
+}
+
+nav ul li {
+    width: 100%;
+    padding: 10px 0;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: white;
+    font-size: 1.2rem;
+    display: flex;
+    align-items: left;
+    justify-content: left;
+    gap: 10px;
+    padding: 10px;
+    width: 90%;
+    text-align: left;
+}
+
+nav ul li a:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+
+.logout-btn {
+    display: flex;
+    align-items: left;
+    justify-content: left;
+    gap: 10px;
+    padding: 10px;
+    text-decoration: none;
+    color: white;
+    font-size: 1rem;
+    width: 100%;
+    transition: background 0.3s ease-in-out;
+}
+
+.logout-btn:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.dashboard-container {
+    display: flex;
+    height: 100vh; /* Full viewport height */
+    width: 100vw;
+    padding: 2.5rem; /* Full viewport width */
+}
+
+.main-content {
+    flex-grow: 1; /* Takes all available space */
+    margin-left: 260px; /* Sidebar width */
+    width: calc(100% - 260px); /* Full width minus sidebar */
+    height: 100vh; /* Full height */
+    box-sizing: border-box; /* Ensures padding doesn't affect width */
+}
+
+.title-header{
+    display: flex;
+    justify-content: space-between; /* Pushes elements to opposite sides */
+    align-items: center; /* Aligns items vertically */
+    width: 100%;
+    margin-bottom: 20px;
+    margin-top: 25px;
+}
+
+.title-text p {
+    font-size: 1rem;
+    font-weight: bold;
+    margin-top: 5px;
+    padding: 0;
+    color: grey;
+}
+
+h1 {
+    font-family: "Trirong", serif;
+    font-size: 2rem;
+    margin-top: 20px;
+    padding: 0;
+}
+
+tbody {
+   text-align: center;
+}
+
+
+tbody tr a i{
+    margin-left: 50px;
+}
+
+.btn {
+    height: 40px;
+    padding-left: 10px;
+    padding-right: 10px;
+    background-color: black;
+    color: white;
+    border: 1px solid black;
+    border-radius: 8px;
+    text-align: center;
+    width: 100px;
+    border-radius: 4px;
+    margin: 10px;
+    font-size: 0.8rem;
+}
+
+.search-bar {
+    height: 1rem;
+    width: 300px;
+    padding: 10px;
+    border: 1px solid rgb(208, 203, 203);
+    border-radius: 8px;
+    margin-top: 5px;
+    font-size: 1.0rem;
+    color: gray;
+}
+
+.search-bar::placeholder {
+    color: grey;
+    font-size: 1rem;
+}
+
+
+
+.table-container {
+    border: 1px solid rgb(183, 170, 170);
+    width: 99%;
+    border-radius: 10px;
+    height: 70vh;
+    margin-top: 20px;
+}
+
+thead {
+    font-weight: bold;
+    color: gray;
+}
+thead:hover{
+    background-color: rgb(156, 156, 210);
+}
+.table-container h2 {
+    padding-left: 30px;
+}
+
+th {
+    text-align: left;
+    padding: 16px 30px; /* Adds spacing inside each header cell */
+    font-size: 14px;
+    text-transform: uppercase;
+    white-space: nowrap;
+}
+
+.actions {
+    padding-left: 150px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    font-family: Arial, sans-serif;
+}
+
+th, td {
+    border-bottom: 1px solid #ddd; /* Adds horizontal lines */
+    padding: 12px;
+    text-align: center;
+    padding: 16px 20px;
+   
+}
+
+td{
+    min-height: 50px;
+}
+
+th {
+    background-color: #f4f4f4; /* Light gray background for headers */
+    font-weight: bold;
+    text-align: center;
+}
+
+tr:hover {
+    background-color: #f1f1f1; /* Light hover effect for rows */
+}
+
+
+.occupancy-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100px; /* Adjust width as needed */
+}
+
+.occupancy-text {
+    font-size: 0.9rem;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.occupancy-bar {
+    width: 100%;
+    height: 10px;
+    background-color: #ddd; /* Background color of the empty bar */
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.occupancy-fill {
+    height: 100%;
+    background-color: green; /* Color of the filled part */
+    transition: width 0.5s ease-in-out;
+}

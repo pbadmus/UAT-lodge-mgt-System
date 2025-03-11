@@ -1,0 +1,112 @@
+/* style.css */
+@keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+@keyframes slideInDown {
+    0% { transform: translateY(-50px); opacity: 0; }
+    100% { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes slideInUp {
+    0% { transform: translateY(50px); opacity: 0; }
+    100% { transform: translateY(0); opacity: 1; }
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    background: linear-gradient(180deg, #e6dbff 0%, #e64417 100%);
+    animation: fadeIn 1s ease-in-out;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    overflow: hidden;
+}
+
+/* Main container */
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    width: 90%;
+    max-width: 600px;
+    padding: 20px;
+}
+
+/* Logo */
+.logo {
+    max-width: 100%;
+    height: auto;
+    width: 200px;
+    animation: slideInDown 1s ease-in-out;
+}
+
+/* Title */
+h1 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+    color: #fff;
+    animation: slideInDown 1s ease-in-out;
+}
+
+/* Subtitle */
+p {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+    color: #120b0b;
+    animation: slideInUp 1s ease-in-out;
+}
+
+/* Button */
+.login-button {
+    padding: 10px 20px;
+    background-color: #562ec4;
+    color: white;
+    font-size: 1rem;
+    border-radius: 25px;
+    cursor: pointer;
+    text-decoration: none;
+    animation: slideInUp 1s ease-in-out;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.login-button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Media Queries for Smaller Screens */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 2rem;
+    }
+    p {
+        font-size: 1rem;
+    }
+    .login-button {
+        padding: 8px 16px;
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 480px) {
+    h1 {
+        font-size: 1.8rem;
+    }
+    p {
+        font-size: 0.9rem;
+    }
+    .logo {
+        width: 150px;
+    }
+    .login-button {
+        padding: 7px 14px;
+        font-size: 0.85rem;
+    }
+}

@@ -1,0 +1,26 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome</title>
+    <link rel="stylesheet" href="{% static 'css/home.css' %}">
+</head>
+<body>
+    <div class="container">
+        <!-- The logo -->
+         <img class="logo" src="{% static 'images/UATlogo.png' %}" alt="UAT logo">
+
+         <!-- Title and subtitle -->
+          <h1>Welcome to UAT Lodge Management System</h1>
+          <p>Manage staff and corpers booking efficently.</p>
+
+          <!-- Button for admin access-->
+           <a href="{% url 'admin-login' %}" class="login-button">Admin Login</a>
+    </div>
+
+    
+</body>
+</html>

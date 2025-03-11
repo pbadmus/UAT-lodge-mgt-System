@@ -1,0 +1,114 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Room</title>
+    <link rel="stylesheet" href="{% static 'css/admin-room.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+
+    <!-- Side bar: find a way to convert this to a reusable component-->
+    <div class="dashboard-container">
+
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <div class="sidebar-header">
+                <div class="profile-pic">
+                    <i class="fas fa-user-circle"></i>
+                </div>
+                <h2>UAT Staff Lodge Manager</h2>
+                <hr>
+                <h2>Welcome, John Doe</h2>
+                <hr>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="{% url 'dashboard' %}"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
+                    <li><a href="{% url 'admin-room' %}"><i class="fas fa-bed"></i> Rooms</a></li>
+                    <li><a href="{% url 'staff-room' %}"><i class="fas fa-user-tie"></i> Staff</a></li>
+                    <li><a href="#"><i class="fas fa-calendar-check"></i> Bookings</a></li>
+                    <li><a href="#"><i class="fas fa-cog"></i> Settings</a></li>
+                </ul>
+            </nav>
+            <div class="logout">
+                <a href="{% url 'admin-logout' %}" class="logout-btn">
+                    <i class="fas fa-sign-out-alt"></i> Logout
+                </a>
+            </div>
+        </div>
+
+        <!-- Main content -->
+        <div class="main-content">
+            <!-- Title -->
+            <div class="title-header">
+                <div class="title-text">
+                    <h1>Room</h1>
+                    <p>Manage lodge and their details</p>
+                    <input type="text" class="search-bar" placeholder="Search rooms ...">
+                    
+                </div>
+                <div class="btn-container">
+                    <a href="{% url 'add-room' %}" target="_blank">
+                        <button class="btn">
+                            <i class="fa fa-add"></i> Add Room
+                        </button>
+                    </a>
+                 </div>
+            </div>
+          
+            
+
+            <!-- Table -->
+            <div class="table-container">
+                <h2>All Rooms</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            
+                            <th>Room Number</th>
+                            <th>Building</th>
+                            <th>Room Type</th>
+                            <th>Capacity</th>
+                            <th>Occupancy</th>
+                            <th>Status</th>
+                            <th class="actions">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for room in rooms %}
+                        <tr>
+                            
+                            <td>{{ room.room_number }}</td>
+                            <td>{{ room.building }}</td>
+                            <td>{{ room.room_type }}</td>
+                            <td>{{ room.capacity }}</td>
+                            <td><div class="occupancy-container">
+                                <span class="occupancy-text">{{ room.occupancy }}/{{ room.capacity }}</span>
+                                <div class="occupancy-bar">
+                                    <div class="occupancy-fill" style="width: calc(1 / {{ room.capacity }} * 100%)"></div>
+                                </div>
+                            </div> </td><!-- use number representation to fix this -->
+                            <td>{{ room.status }}</td>
+                            <td>
+                                <a href="#">
+                                    <i class="fas fa-edit"></i>
+                                </a>
+                                <a href="#">
+                                    <i class="fas fa-trash-alt"></i> 
+                                </a>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </div>
+    
+</body>
+</html>
