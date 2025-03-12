@@ -33,7 +33,7 @@ def admin_login(request):
                 user.save()
                  
             login(request, user)
-            return redirect('admin-dashboard')  
+            return redirect('dashboard')  
         else:
             messages.error(request, "Invalid credentials or unauthorized access.")
 
@@ -43,6 +43,7 @@ def home(request):
     return render(request, 'home.html')
 
 
+@login_required
 def dashboard(request):
     room = Room.objects.all()
     room_count = room.count()
@@ -57,12 +58,13 @@ def rooms(request):
     room = Room.objects.all()
     return render(request, 'admin-rooms.html', {'rooms': room})
     
-
+@login_required
 def admin_logout(request):
     logout(request)
     messages.success(request, "You have been successfully logged out.")
     return redirect('admin-login')
 
+@login_required
 def add_room(request):
     if request.method == 'POST':
         form = RoomForm(request.POST)
@@ -89,11 +91,11 @@ def delete_room(request, room_number):
     return HttpResponseNotAllowed(['POST'])     
 
 
-# @login_required
+@login_required
 def edit_room(request, room_number):
     room_list =get_object_or_404(Room, room_number=room_number)
     if request.method == "POST":
-        form = Room(request.POST, instance=room_list)
+        form = RoomForm(request.POST, instance=room_list)
         if form.is_valid():
             form.save()
             return redirect('admin-room')
@@ -104,3 +106,12 @@ def edit_room(request, room_number):
     
 def staff_room(request):
     return render(request, 'staff-room.html')
+
+def room_filter(request):  
+    query = request.GET.get('q', '').strip()
+    if query:
+        rooms = Room.objects.filter(room_number__icontains=query) | Room.objects.filter(building__icontains=query)
+    else:
+        rooms = Room.objects.all()
+
+    return render(request, 'admin-rooms.html', {'rooms': rooms})

@@ -22,7 +22,7 @@
                 </div>
                 <h2>UAT Staff Lodge Manager</h2>
                 <hr>
-                <h2>Welcome, John Doe</h2>
+                <h2>Welcome, {{ user.username }}</h2>
                 <hr>
             </div>
             <nav>
@@ -48,7 +48,7 @@
                 <div class="title-text">
                     <h1>Room</h1>
                     <p>Manage lodge and their details</p>
-                    <input type="text" class="search-bar" placeholder="Search room ...">
+                    <input type="text" class="search-bar" id="search-bar" placeholder="Search rooms ..." oninput="filterRooms()">
                     
                 </div>
                 <div class="btn-container">
@@ -112,6 +112,17 @@
         </div>
 
     </div>
+
+    <script>
+        function filterRooms() {
+            let query = document.getElementById("search-bar").value;
+            fetch(`{% url 'room-filter' %}?q=${query}`)
+            .then(response => response.text())
+            .then(data => {
+                document.querySelector(".table-container").innerHTML = new DOMParser().parseFromString(data, "text/html").querySelector(".table-container").innerHTML;
+            });
+        }
+    </script>
     
 </body>
 </html>

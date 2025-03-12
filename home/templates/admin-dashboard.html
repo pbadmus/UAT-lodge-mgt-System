@@ -20,7 +20,7 @@
                 </div>
                 <h2>UAT Staff Lodge Manager</h2>
                 <hr>
-                <h2>Welcome, John Doe</h2>
+                <h2>Welcome, {{ user.username }}</h2>
                 <hr>
             </div>
             <nav>
@@ -28,7 +28,7 @@
                     <li><a href="{% url 'dashboard' %}"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
                     <li><a href="{% url 'admin-room' %}"><i class="fas fa-bed"></i> Rooms</a></li>
                     <li><a href="{% url 'staff-room' %}"><i class="fas fa-user-tie"></i> Staff</a></li>
-                    <li><a href="#"><i class="fas fa-calendar-check"></i> Bookings</a></li>
+                    <li><a href="#"><i class="fas fa-calendar-check"></i> Analytics</a></li>
                     <li><a href="#"><i class="fas fa-cog"></i> Settings</a></li>
                 </ul>
             </nav>
