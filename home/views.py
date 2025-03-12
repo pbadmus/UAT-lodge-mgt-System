@@ -1,12 +1,15 @@
-from django.shortcuts import render
+from django.shortcuts import get_object_or_404, render
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from django.contrib.auth.models import User
 from django.urls import reverse
 from .forms import RoomForm
-from django.http import JsonResponse
+from django.http import HttpResponseNotAllowed, JsonResponse
 from django.db.models import Sum
+from .models import Room
+from django.contrib.auth.decorators import login_required
+
 
 def admin_login(request):
     if request.method == "POST":
@@ -72,12 +75,32 @@ def add_room(request):
 
     return render(request, 'new_room.html', {'form': form})
 
-from .models import Room
 def room_list(request):
     room = Room.objects.all()
     form = RoomForm()
     return render(request, 'admin-rooms.html', {'rooms': room, 'form': form})
 
+# @login_required
+def delete_room(request, room_number):
+    room_list = get_object_or_404(Room, room_number=room_number)
+    if request.method == 'POST':
+        room_list.delete()
+        return redirect(reverse('admin-room'))  # Redirect to room list page
+    return HttpResponseNotAllowed(['POST'])     
 
+
+# @login_required
+def edit_room(request, room_number):
+    room_list =get_object_or_404(Room, room_number=room_number)
+    if request.method == "POST":
+        form = Room(request.POST, instance=room_list)
+        if form.is_valid():
+            form.save()
+            return redirect('admin-room')
+    else:
+        form = RoomForm(instance=room_list)
+    return render(request, 'new_room.html', {'form': form})
+    
+    
 def staff_room(request):
     return render(request, 'staff-room.html')

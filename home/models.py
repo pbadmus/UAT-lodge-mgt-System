@@ -36,8 +36,8 @@ from django.db import models
 
 class Room(models.Model):
     ROOM_TYPES = [
-        ('single', 'Single'),
-        ('shared', 'Shared'),
+        ('Single', 'Single'),
+        ('Shared', 'Shared'),
     ]
 
     building = models.CharField(max_length=50)  # Manually entered building block
