@@ -13,5 +13,9 @@ urlpatterns = [
     path('delete-room/<str:room_number>/', views.delete_room, name='delete-room'),
     path('edit-room/<str:room_number>/', views.edit_room, name='edit-room'),
     path('rooms/filter/', views.room_filter, name='room-filter'),
+    path('add-staff/', views.add_staff, name='add_staff'),
+    path('get-available-rooms/', views.available_room, name='get_available_rooms'),
+    path('delete-staff/<str:name>/', views.delete_staff, name='delete-staff'),
+    path('edit-staff/<str:name>/', views.edit_staff, name='edit-staff'),
 
 ]

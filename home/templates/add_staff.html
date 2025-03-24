@@ -1,0 +1,55 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Staff</title>
+    <link rel="stylesheet" href="{% static 'css/new-staff.css' %}">
+</head>
+<body>
+    <div class="modal-overlay">
+        <div class="modal-container">
+            <h2 class="modal-title">Add New Staff</h2>
+            <p class="modal-subtitle">Enter the details for the new staff</p>
+            
+            <form method="post">
+                {% csrf_token %}
+                <div class="form-group">{{ form.name.label_tag }} {{ form.name }}</div>
+                <div class="form-group">{{ form.room_type.label_tag }} {{ form.room_type }}</div>
+                <div class="form-group">{{ form.room_number.label_tag }} {{ form.room_number }}</div>
+                <div class="form-group">{{ form.date_exit.label_tag }} {{ form.date_exit }}</div>
+                <div class="form-group">{{ form.status.label_tag }} {{ form.status }}</div>
+                
+                <div class="modal-buttons">
+                    <button type="button" class="cancel-btn">Cancel</button>
+                    <button type="submit" class="submit-btn">Add Staff</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const roomTypeField = document.getElementById("id_room_type");
+        const roomNumberField = document.getElementById("id_room_number");
+
+        roomTypeField.addEventListener("change", function () {
+            const selectedRoomType = this.value;
+
+            fetch(`/get-available-rooms/?room_type=${selectedRoomType}`)
+                .then(response => response.json())
+                .then(data => {
+                    roomNumberField.innerHTML = "";
+                    data.rooms.forEach(room => {
+                        let option = document.createElement("option");
+                        option.value = room.id;
+                        option.textContent = room.room_number;
+                        roomNumberField.appendChild(option);
+                    });
+                });
+        });
+    });
+    </script>
+</body>
+</html>

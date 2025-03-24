@@ -148,7 +148,7 @@ nav ul li a:hover {
 .stats-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr); /* 4 equal columns */
-    gap: 20px;
+    gap: 15px;
     margin-top: 20px;
 }
 
@@ -156,7 +156,7 @@ nav ul li a:hover {
     background: white;
     border: 1px solid #ddd;
     border-radius: 10px;
-    padding: 20px;
+    padding: 15px;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
